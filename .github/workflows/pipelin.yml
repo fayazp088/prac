@@ -1,31 +1,20 @@
-name: Context testing
+name: Hi Mascot
 on: push
+env:
+  mascot: Mona
+  super_duper_var: totally_awesome
 
 jobs:
-  dump_contexts_to_log:
-    runs-on: ubuntu-latest
+  windows_job:
+    runs-on: windows-latest
     steps:
-      - name: Dump GitHub context
+      - run: echo 'Hi ${{ env.mascot }}' # Hi Mona
+      - run: echo 'Hi ${{ env.mascot }}' # Hi Octocat
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
-      - name: Dump strategy context
-        env:
-          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
-      - name: Dump matrix context
-        env:
-          MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        run: echo "$MATRIX_CONTEXT"
+          mascot: Octocat
+  linux_job:
+    runs-on: ubuntu-latest
+    env:
+      mascot: Tux
+    steps:
+      - run: echo 'Hi ${{ env.mascot }}' # Hi Tux
