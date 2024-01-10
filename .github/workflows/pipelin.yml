@@ -23,4 +23,4 @@ jobs:
           name: output-log-file
       - name: Display contents of output.log
         shell: bash
-        run: cat output-log-file
+        run: cat output.log
