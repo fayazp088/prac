@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 )
 
 type PingHandler struct {
@@ -32,6 +33,8 @@ func pingHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
+	port := os.Getenv("PORT")
+	fmt.Println("PORT IS: ", port)
 	http.HandleFunc("/ping", pingHandler)
 	http.ListenAndServe(":8080", nil)
 }

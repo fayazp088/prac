@@ -5,11 +5,7 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "14"
-      - run: npm install -g bats
-      - run: bats -v
-      - run: java --version
-      - run: go version
+      - name: running golang file
+        run: go run main.go
+        env:
+          PORT: 8080
