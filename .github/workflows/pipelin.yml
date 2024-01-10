@@ -5,6 +5,9 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+  
       - name: running golang file
         run: go run main.go
         env:
